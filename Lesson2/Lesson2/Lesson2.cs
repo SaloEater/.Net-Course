@@ -38,6 +38,13 @@ namespace Lesson2
             ValidateNum(secondNum);
             return CalculateSum(firstNum, secondNum);
         }
+        private void ValidateNum(string number)
+        {
+            var invalidChars = number.Any(i => i is < '0' or > '9' and < 'a' or > 'f');
+            if (invalidChars) {
+                throw new ArgumentException();
+            }
+        }
 
         private string CalculateSum(string firstNum, string secondNum)
         {
@@ -53,13 +60,6 @@ namespace Lesson2
             return Reverse(result);
         }
 
-        private void ValidateNum(string number)
-        {
-            var invalidChars = number.Any(i => i is < '0' or > '9' and < 'a' or > 'f');
-            if (invalidChars) {
-                throw new ArgumentException();
-            }
-        }
         private char GetCharAt(string number, int index)
         {
             if (index >= number.Length) {
