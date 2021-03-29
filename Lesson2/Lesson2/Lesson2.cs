@@ -57,7 +57,7 @@ namespace Lesson2
                 sumResult = SumChar(firstChar, secondChar, sumResult.Overflow);
                 result += sumResult.Ch;
             }
-            return Reverse(result);
+            return FormatResult(result);
         }
 
         private char GetCharAt(string number, int index)
@@ -102,7 +102,7 @@ namespace Lesson2
             return result with { Ch = ch };
         }
 
-        private string Reverse(string result)
+        private string FormatResult(string result)
         {
             return new string(result.ToCharArray().Reverse().ToArray());
         }
