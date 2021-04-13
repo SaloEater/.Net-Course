@@ -17,7 +17,7 @@ namespace Lesson3
             var result = SumExpression();
             var a = result(first, second);
             Console.WriteLine(a);
-        }
+        }e
 
         public static Func<string, string, string> SumExpression()
         {
