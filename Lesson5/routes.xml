@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<routes>
+  <routes uri="localhost:3001" name="text"/>
+  <routes uri="localhost:3002" name="find"/>
+  <routes uri="localhost:3003" name="task"/>
+</routes>
