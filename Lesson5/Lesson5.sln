@@ -3,22 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson5", "Lesson5\Lesson5.csproj", "{E14B97BA-64EB-44AE-A1BC-DB222857B6B3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{F84F52F2-3C6E-4FF8-AF55-499E2986A618}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{409F87F7-0010-4969-BD5C-C95508B241B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{409F87F7-0010-4969-BD5C-C95508B241B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextService", "TextService\TextService.csproj", "{5403F999-41D7-4834-87A4-C027BB9C53A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextService", "TextService\TextService.csproj", "{5403F999-41D7-4834-87A4-C027BB9C53A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindService", "FindService\FindService.csproj", "{8D5B8B20-386C-4967-98B8-60553E0D1F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FindService", "FindService\FindService.csproj", "{8D5B8B20-386C-4967-98B8-60553E0D1F2E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{69ED1CF2-53B4-47CD-B27C-31C740CE285E}"
 	ProjectSection(SolutionItems) = preProject
 		routes.xml = routes.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskService", "TaskService\TaskService.csproj", "{5625A3F8-8C3B-44DE-9515-231129675833}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskService", "TaskService\TaskService.csproj", "{5625A3F8-8C3B-44DE-9515-231129675833}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E14B97BA-64EB-44AE-A1BC-DB222857B6B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E14B97BA-64EB-44AE-A1BC-DB222857B6B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E14B97BA-64EB-44AE-A1BC-DB222857B6B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E14B97BA-64EB-44AE-A1BC-DB222857B6B3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{409F87F7-0010-4969-BD5C-C95508B241B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{409F87F7-0010-4969-BD5C-C95508B241B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{409F87F7-0010-4969-BD5C-C95508B241B7}.Release|Any CPU.ActiveCfg = Release|Any CPU

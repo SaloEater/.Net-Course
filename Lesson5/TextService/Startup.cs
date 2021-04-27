@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TextService.Contract;
+using TextService.Repository;
 
 namespace TextService
 {
@@ -26,8 +28,8 @@ namespace TextService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddSingleton(typeof(ITextRepository), typeof(ArrayTextRepository));
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TextService", Version = "v1" });
             });

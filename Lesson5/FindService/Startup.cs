@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Contract;
+using Core.Controller;
 
 namespace FindService
 {
@@ -31,7 +33,7 @@ namespace FindService
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FindService", Version = "v1" });
             });
-            services.
+            services.AddSingleton(typeof(ITextController), typeof(TextController));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

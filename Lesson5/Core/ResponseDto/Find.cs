@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Controller
+namespace Core.ResponseDto
 {
-    public interface ITaskController
+    public class Find
     {
+        public Dictionary<string, int> wordsMatches = new();
     }
 }
