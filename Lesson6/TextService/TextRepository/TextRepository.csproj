@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contract\Contract.csproj" />
+    <ProjectReference Include="..\DatabaseEntity\DatabaseEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EFRepositoryBase">
+      <HintPath>..\..\EFRepositoryBase\EFRepositoryBase\bin\Debug\net5.0\EFRepositoryBase.dll</HintPath>
+    </Reference>
+    <Reference Include="RepositoryBase">
+      <HintPath>..\..\RepositoryBase\RepositoryBase\bin\Debug\net5.0\RepositoryBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
