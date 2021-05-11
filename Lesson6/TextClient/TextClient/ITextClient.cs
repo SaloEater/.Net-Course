@@ -8,10 +8,10 @@ namespace TextClient
 {
     public interface ITextClient
     {
-        [Get("/text/{id}")]
+        [Get("/text/one")]
         Task<TextFile> GetById(Guid id);
 
-        [Get("/text/{ids}")]
+        [Get("/text/some")]
         Task<TextFile[]> GetByIds(Guid[] ids);
 
         [Get("/text/ids")]
@@ -20,10 +20,10 @@ namespace TextClient
         [Post("/text")]
         Task<TextFile> Post([Body] string text);
 
-        [Post("/text/file/{streamTextFile}")]
+        [Post("/text/file")]
         Task<TextFile> PostFile(Stream streamTextFile);
 
-        [Post("/text/url/{fileUrl}")]
+        [Post("/text/url")]
         Task<TextFile> PostFileUrl([Body] string fileUrl);
     }
 }

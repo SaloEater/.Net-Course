@@ -23,13 +23,13 @@ namespace TextService.Controllers
             TextService = textService;
         }
 
-        [HttpGet("one/{id}")]
+        [HttpGet("one")]
         public async Task<TextFile> GetById([FromQuery] Guid id)
         {
             return await TextService.GetById(id);
         }
 
-        [HttpGet("some/{ids}")]
+        [HttpGet("some")]
         public async Task<TextFile[]> GetByIds([FromQuery] Guid[] ids)
         {
             return await TextService.GetSomeByIds(ids);

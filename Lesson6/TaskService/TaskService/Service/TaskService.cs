@@ -68,9 +68,11 @@ namespace TaskService.Service
                 interval = interval
             };
 
+            await TaskRepository.Create(task);
+
             var entities = new List<Word>();
             foreach (var word in words) {
-                var entity = new Word { Content = word };
+                var entity = new Word { Content = word, TaskId = task.Id};
                 entities.Add(entity);
             }
             task.Words = entities;
@@ -78,8 +80,9 @@ namespace TaskService.Service
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
             CancellationToken token = cancelTokenSource.Token;
             //task.CancellationToken = token.ToString();
-            await TaskRepository.Create(task);
+            await TaskRepository.Update(task);
 
+            var t = await TaskRepository.GetById(task.Id);
             var worker = new BackgroundWorker();
             worker.DoWork += async delegate (object sender, DoWorkEventArgs args) {
                 do {

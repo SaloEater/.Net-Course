@@ -105,7 +105,7 @@ namespace EFRepositoryBase
             return true;
         }
 
-        public async Task<bool> Update(T entity)
+        public virtual async Task<bool> Update(T entity)
         {
             Entities.Update(entity);
             await SaveChangesAsync();

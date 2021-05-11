@@ -11,6 +11,6 @@ namespace TaskClient
         public Task<Entity.Task[]> Info([Query] Guid id);
 
         [Post("task/Start")]
-        public Guid Start([Body] string dateStart, [Body] string dateEnd, [Body] int interval, [Body] string[] words);
+        public Task<Guid> Start([Body] string dateStart, [Body] string dateEnd, [Body] int interval, [Body] string[] words);
     }
 }

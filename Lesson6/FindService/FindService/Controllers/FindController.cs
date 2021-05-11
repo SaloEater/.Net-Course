@@ -21,10 +21,11 @@ namespace FindService.Controllers
             FindService = findService;
         }
 
-        [HttpGet("{id}")]
-        public Task<SingleFind[]> Find([FromQuery] Guid id, [FromQuery] string[] words)
+        [HttpGet("")]
+        public async Task<SingleFind[]> Find([FromQuery] Guid id, [FromQuery] string[] words)
         {
-            return FindService.Find(id, words);
+            var r = await FindService.Find(id, words);
+            return r;
         }
     }
 }

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using FindClient.Configuration;
 using FindService.Contract;
 using FindService.Service;
+using TextClient.Configuration;
 
 namespace FindService
 {
@@ -35,7 +36,7 @@ namespace FindService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FindService", Version = "v1" });
             });
-            services.AddFindClient(Configuration);
+            services.AddTextServiceClient(Configuration);
             services.AddTransient<IFindService, Service.FindService>();
         }
 

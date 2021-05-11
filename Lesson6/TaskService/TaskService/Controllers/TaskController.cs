@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskClient;
+using TaskService.Contract;
 
 namespace TaskService.Controllers
 {
@@ -12,16 +13,23 @@ namespace TaskService.Controllers
     [Route("[controller]")]
     public class TaskController : ControllerBase, ITaskClient
     {
-        [HttpGet("info/{id}")]
-        public Task<TaskClient.Entity.Task[]> Info([FromQuery] Guid id)
+        private readonly ITaskService TaskService;
+
+        public TaskController(ITaskService taskService)
         {
-            throw new NotImplementedException();
+            TaskService = taskService;
+        }
+
+        [HttpGet("info/{id}")]
+        public async Task<TaskClient.Entity.Task[]> Info([FromQuery] Guid id)
+        {
+            return await TaskService.Info(id);
         }
 
         [HttpPost("start")]
-        public Guid Start([FromForm] string dateStart, [FromForm] string dateEnd, [FromForm] int interval, [FromForm] string[] words)
+        public async Task<Guid> Start([FromForm] string dateStart, [FromForm] string dateEnd, [FromForm] int interval, [FromForm] string[] words)
         {
-            throw new NotImplementedException();
+            return await TaskService.Start(dateStart, dateEnd, interval, words);
         }
     }
 }

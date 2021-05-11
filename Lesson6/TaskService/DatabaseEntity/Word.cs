@@ -13,6 +13,10 @@ namespace DatabaseEntity
     {
         public string Content;
 
+        public Guid TaskId;
+
+        public virtual Task Task { get; set;  }
+
         public virtual ICollection<TaskText> TasksTexts { get; set; }
     }
 }

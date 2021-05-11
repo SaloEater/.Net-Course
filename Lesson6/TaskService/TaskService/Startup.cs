@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskEFRepository;
+using TaskService.Contract;
 using TextClient.Configuration;
 
 namespace TaskService
@@ -36,6 +37,7 @@ namespace TaskService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TaskService", Version = "v1" });
             });
             services.AddTaskRepository();
+            services.AddTransient<ITaskService, Service.TaskService>();
             services.AddDbOption(Configuration);
             services.AddTextServiceClient(Configuration);
             services.AddFindServiceClient(Configuration);

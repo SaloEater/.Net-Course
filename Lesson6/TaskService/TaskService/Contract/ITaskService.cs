@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TaskService.Contract
 {
-    interface ITaskService
+    public interface ITaskService
     {
         public Task<Guid> Start(string dateStart, string dateEnd, int interval, string[] words);
 
