@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FindClient">
+      <HintPath>..\..\FindClient\FindClient\bin\Debug\net5.0\FindClient.dll</HintPath>
+    </Reference>
+    <Reference Include="TextClient">
+      <HintPath>..\..\TextClient\TextClient\bin\Debug\net5.0\TextClient.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

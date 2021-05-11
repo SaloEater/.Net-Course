@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindService", "FindService\FindService.csproj", "{40F2B35C-6893-442D-948E-6C757A85FC34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40F2B35C-6893-442D-948E-6C757A85FC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40F2B35C-6893-442D-948E-6C757A85FC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40F2B35C-6893-442D-948E-6C757A85FC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40F2B35C-6893-442D-948E-6C757A85FC34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98907114-968C-4A70-8159-31CFA627AE32}
+	EndGlobalSection
+EndGlobal
