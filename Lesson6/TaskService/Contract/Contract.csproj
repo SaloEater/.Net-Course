@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseEntity\DatabaseEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RepositoryBase">
+      <HintPath>..\..\RepositoryBase\RepositoryBase\bin\Debug\net5.0\RepositoryBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

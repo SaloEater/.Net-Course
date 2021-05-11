@@ -9,7 +9,7 @@ namespace FindClient.Configuration
 {
     public static class FindClientExtension
     {
-        public static void AddFindClient(this IServiceCollection services, IConfiguration configuration)
+        public static void AddFindServiceClient(this IServiceCollection services, IConfiguration configuration)
         {
             services.TryAddTransient(_ => RestService.For<IFindClient>(new HttpClient()
             {

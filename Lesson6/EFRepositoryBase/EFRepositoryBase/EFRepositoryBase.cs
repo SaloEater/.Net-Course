@@ -24,8 +24,13 @@ namespace EFRepositoryBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_dbOptions.Value.ConnectionString);
+            SetupDatabase(optionsBuilder);
             base.OnConfiguring(optionsBuilder);
+        }
+
+        public virtual void SetupDatabase(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_dbOptions.Value.ConnectionString);
         }
 
         public async Task<T> Create(T entity)

@@ -9,7 +9,7 @@ namespace TaskClient.Entity
 {
     public class Task
     {
-        public int TextId;
+        public Guid TextId;
 
         public SingleFind[] Finds;
     }

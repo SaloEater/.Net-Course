@@ -21,11 +21,10 @@ namespace FindService.Service
         {
             var text = await TextClient.GetById(id);
             var result = new List<SingleFind>();
-            int index = 0;
             foreach (string word in words)
             {
                 int matches = text.TextValue.Split(word).Length - 1;
-                var item = new SingleFind() { WordIndex = index++, Matched = matches };
+                var item = new SingleFind() { Word = word, Matched = matches };
                 result.Add(item);
             }
             return result.ToArray();
