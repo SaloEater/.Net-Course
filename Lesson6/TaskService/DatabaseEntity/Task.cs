@@ -1,23 +1,23 @@
 ﻿using RepositoryBase;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatabaseEntity
 {
-    [Table("task")]
     public class Task : EntityBase
     {
-        public ICollection<TaskText> TasksTexts;
+        public List<TaskText> TasksTexts;
 
-        public ICollection<Word> Words;
+        public List<Word> Words;
 
-        public DateTime dateStart;
+        public DateTime DateStart { get; set; }
 
-        public DateTime dateEnd;
+        public DateTime DateEnd { get; set; }
 
-        public string CancellationToken;
+        public string CancellationToken { get; set; }
 
-        public int interval;
+        public int Interval { get; set; }
     }
 }

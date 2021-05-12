@@ -12,7 +12,7 @@ namespace TaskEFRepository
     {
         public static void AddTaskRepository(this IServiceCollection services)
         {
-            services.AddTransient<ITaskRepository, TaskRepository>();
+            services.AddSingleton<ITaskRepository, TaskRepository>();
         }
     }
 }

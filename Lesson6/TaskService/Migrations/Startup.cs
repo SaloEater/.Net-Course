@@ -26,7 +26,7 @@ namespace Migrations
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbOption(Configuration);
-            services.AddDbContext<TaskMigrationContext>();
+            services.AddDbContext<MigrationContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,7 +20,7 @@ namespace TaskService.Controllers
             TaskService = taskService;
         }
 
-        [HttpGet("info/{id}")]
+        [HttpGet("info")]
         public async Task<TaskClient.Entity.Task[]> Info([FromQuery] Guid id)
         {
             return await TaskService.Info(id);

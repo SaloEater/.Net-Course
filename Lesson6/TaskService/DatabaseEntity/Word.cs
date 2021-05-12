@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace DatabaseEntity
 {
-    [Table("word")]
     public class Word : EntityBase
     {
-        public string Content;
+        public string Text { get; set; }
 
-        public Guid TaskId;
+        public Guid TaskId { get; set; }
 
-        public virtual Task Task { get; set;  }
+        public virtual Task Task { get; set; }
 
-        public virtual ICollection<TaskText> TasksTexts { get; set; }
+        public virtual List<TaskText> TasksTexts { get; set; }
     }
 }

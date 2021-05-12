@@ -24,8 +24,7 @@ namespace FindService.Controllers
         [HttpGet("")]
         public async Task<SingleFind[]> Find([FromQuery] Guid id, [FromQuery] string[] words)
         {
-            var r = await FindService.Find(id, words);
-            return r;
+            return await FindService.Find(id, words);
         }
     }
 }

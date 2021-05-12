@@ -7,7 +7,7 @@ namespace TaskClient
 {
     public interface ITaskClient
     {
-        [Get("task/Info/{id}")]
+        [Get("task/Info")]
         public Task<Entity.Task[]> Info([Query] Guid id);
 
         [Post("task/Start")]

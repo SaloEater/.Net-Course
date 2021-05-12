@@ -7,7 +7,7 @@ namespace FindClient
 {
     public interface IFindClient
     {
-        [Get("/find/{id}")]
+        [Get("/find")]
         Task<SingleFind[]> Find([Query] Guid id, [Query(CollectionFormat.Multi)] string[] words);
     }
 }

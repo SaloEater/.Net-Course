@@ -48,7 +48,7 @@ namespace TaskService.Service
                 foreach (var taskText in task.TasksTexts.Where(i => i.TextId == textId)) {
                     var singleFind = new SingleFind() {
                         Matched = taskText.Count,
-                        Word = task.Words.First(i => i.Id == taskText.WordId).Content
+                        Word = task.Words.First(i => i.Id == taskText.WordId).Text
                     };
                     finds.Add(singleFind);
                 }
@@ -63,47 +63,46 @@ namespace TaskService.Service
             CultureInfo provider = CultureInfo.InvariantCulture;
             var task = new DatabaseEntity.Task()
             {
-                dateStart = DateTime.ParseExact(dateStart, DATE_FORMAT, provider),
-                dateEnd = DateTime.ParseExact(dateEnd, DATE_FORMAT, provider),
-                interval = interval
+                DateStart = DateTime.ParseExact(dateStart, DATE_FORMAT, provider),
+                DateEnd = DateTime.ParseExact(dateEnd, DATE_FORMAT, provider),
+                Interval = interval,
+                Words = new(),
+                TasksTexts = new()
             };
-
-            await TaskRepository.Create(task);
 
             var entities = new List<Word>();
             foreach (var word in words) {
-                var entity = new Word { Content = word, TaskId = task.Id};
-                entities.Add(entity);
+                var entity = new Word { Text = word};
+                task.Words.Add(entity);
             }
-            task.Words = entities;
 
             CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
             CancellationToken token = cancelTokenSource.Token;
             //task.CancellationToken = token.ToString();
-            await TaskRepository.Update(task);
+            await TaskRepository.Create(task);
 
             var t = await TaskRepository.GetById(task.Id);
             var worker = new BackgroundWorker();
             worker.DoWork += async delegate (object sender, DoWorkEventArgs args) {
                 do {
                     var taskId = task.Id;
-                    if (token.IsCancellationRequested || DateTime.Now > task.dateEnd) {
+                    if (token.IsCancellationRequested || DateTime.Now > task.DateEnd) {
                         break;
                     }
 
-                    if (DateTime.Now > task.dateStart) {
+                    if (DateTime.Now > task.DateStart) {
                         var existingTexts = await TextClient.GetIds();
                         var task = await TaskRepository.GetById(taskId);
-                        var processedTexts = task.TasksTexts.Select(i => i.TextId).ToArray();
+                        var processedTexts = task.TasksTexts?.Select(i => i.TextId).ToArray() ?? Array.Empty<Guid>();
                         var idDiff = existingTexts.Except(processedTexts);
                         if (idDiff.Any()) {
                             foreach (var textId in idDiff) {
-                                var response = await FindClient.Find(textId, task.Words.Select(i => i.Content).ToArray());
+                                var response = await FindClient.Find(textId, task.Words.Select(i => i.Text).ToArray());
                                 foreach (var find in response) {
                                     var taskText = new TaskText()
                                     {
                                         Count = find.Matched,
-                                        WordId = task.Words.First(i => i.Content == find.Word).Id,
+                                        WordId = task.Words.First(i => i.Text == find.Word).Id,
                                         TaskId = task.Id,
                                         TextId = textId
                                     };

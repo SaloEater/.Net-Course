@@ -28,7 +28,7 @@ namespace Migrations.Migrations
                     CreatedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     LastSavedBy = table.Column<Guid>(type: "uuid", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    Content = table.Column<string>(type: "text", nullable: false)
+                    Content = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

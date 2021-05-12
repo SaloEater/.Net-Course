@@ -4,18 +4,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatabaseEntity
 {
-    [Table("tasks_texts")]
     public class TaskText : EntityBase
     {
-        public Guid TextId;
+        public Guid TextId { get; set; }
 
-        public int Count;
+        public int Count { get; set; }
 
-        public Guid TaskId;
+        public Guid TaskId { get; set; }
 
         public virtual Task Task { get; set; }
 
-        public Guid WordId;
+        public Guid WordId { get; set; }
 
         public virtual Word Word { get; set; }
     }

@@ -8,8 +8,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Migrations.Migrations
 {
-    [DbContext(typeof(TaskMigrationContext))]
-    partial class TaskMigrationContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(MigrationContext))]
+    partial class MigrationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -25,11 +25,23 @@ namespace Migrations.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<string>("CancellationToken")
+                        .HasColumnType("text");
+
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("DateEnd")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("DateStart")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("Interval")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -50,6 +62,9 @@ namespace Migrations.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("uuid");
@@ -106,12 +121,15 @@ namespace Migrations.Migrations
                     b.Property<DateTime>("LastSavedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid?>("TaskId1")
+                    b.Property<Guid>("TaskId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TaskId1");
+                    b.HasIndex("TaskId");
 
                     b.ToTable("word");
                 });
@@ -119,7 +137,7 @@ namespace Migrations.Migrations
             modelBuilder.Entity("DatabaseEntity.TaskText", b =>
                 {
                     b.HasOne("DatabaseEntity.Task", "Task")
-                        .WithMany("TasksTexts")
+                        .WithMany()
                         .HasForeignKey("TaskId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -139,14 +157,11 @@ namespace Migrations.Migrations
                 {
                     b.HasOne("DatabaseEntity.Task", "Task")
                         .WithMany()
-                        .HasForeignKey("TaskId1");
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Task");
-                });
-
-            modelBuilder.Entity("DatabaseEntity.Task", b =>
-                {
-                    b.Navigation("TasksTexts");
                 });
 
             modelBuilder.Entity("DatabaseEntity.Word", b =>

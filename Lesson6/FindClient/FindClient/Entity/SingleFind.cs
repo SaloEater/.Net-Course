@@ -8,7 +8,7 @@ namespace FindClient.Entity
 {
     public class SingleFind
     {
-        public string Word;
-        public int Matched;
+        public string Word { get; set; }
+        public int Matched { get; set; }
     }
 }

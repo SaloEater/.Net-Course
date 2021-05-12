@@ -33,7 +33,7 @@ namespace EFRepositoryBase
             optionsBuilder.UseSqlServer(_dbOptions.Value.ConnectionString);
         }
 
-        public async Task<T> Create(T entity)
+        public virtual async Task<T> Create(T entity)
         {
             await Entities.AddAsync(entity);
             await SaveChangesAsync();
@@ -77,7 +77,7 @@ namespace EFRepositoryBase
             return await Entities.ToArrayAsync();
         }
 
-        public async Task<T> GetById(Guid id)
+        public virtual async Task<T> GetById(Guid id)
         {
             return await Entities.FirstOrDefaultAsync(i => i.Id == id);
         }

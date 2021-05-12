@@ -5,8 +5,8 @@ namespace TaskClient.Entity
 {
     public class Task
     {
-        public Guid TextId;
+        public Guid TextId { get; set; }
 
-        public SingleFind[] Finds;
+        public SingleFind[] Finds { get; set; }
     }
 }
