@@ -20,6 +20,7 @@ namespace TextClient
         [Post("/text")]
         Task<TextFile> Post([Body] string text);
 
+        [Multipart]
         [Post("/text/file")]
         Task<TextFile> PostFile(Stream streamTextFile);
 

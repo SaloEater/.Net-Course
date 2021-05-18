@@ -15,6 +15,7 @@ using FindClient.Configuration;
 using FindService.Contract;
 using FindService.Service;
 using TextClient.Configuration;
+using OwnAuthentificatonBase.Configuration;
 
 namespace FindService
 {
@@ -36,8 +37,9 @@ namespace FindService
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FindService", Version = "v1" });
             });
-            services.AddTextServiceClient(Configuration);
+            services.AddTextServiceWithAuthentificationClient(Configuration);
             services.AddTransient<IFindService, Service.FindService>();
+            services.AddOwnAppAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,7 @@ namespace FindService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -10,4 +10,10 @@
     <PackageReference Include="Refit" Version="6.0.38" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="AuthentificationBase">
+      <HintPath>..\..\AuthentificationBase\AuthentificationBase\bin\Debug\net5.0\AuthentificationBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

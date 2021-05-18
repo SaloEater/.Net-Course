@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="AuthentificationBase">
+      <HintPath>..\..\AuthentificationBase\AuthentificationBase\bin\Debug\net5.0\AuthentificationBase.dll</HintPath>
+    </Reference>
     <Reference Include="FindClient">
       <HintPath>..\..\FindClient\FindClient\bin\Debug\net5.0\FindClient.dll</HintPath>
     </Reference>

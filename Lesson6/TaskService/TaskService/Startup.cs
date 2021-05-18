@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using OwnAuthentificatonBase.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,9 @@ namespace TaskService
             services.AddTaskRepository();
             services.AddTransient<ITaskService, Service.TaskService>();
             services.AddDbOption(Configuration);
-            services.AddTextServiceClient(Configuration);
-            services.AddFindServiceClient(Configuration);
+            services.AddTextServiceWithAuthentificationClient(Configuration);
+            services.AddFindServiceWithAuthentificationClient(Configuration);
+            services.AddOwnAppAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +59,7 @@ namespace TaskService
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

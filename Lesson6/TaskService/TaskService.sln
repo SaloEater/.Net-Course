@@ -11,12 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskEFRepository", "TaskEFR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseEntity", "DatabaseEntity\DatabaseEntity.csproj", "{0F90E553-4248-4ABE-8921-EBFF9098DC7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{27A4C609-DD70-4FFD-A252-1175BD692FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrations", "Migrations\Migrations.csproj", "{27A4C609-DD70-4FFD-A252-1175BD692FFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{453ACA5D-2F15-43D8-AB2B-973529F45DC9}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwnAuthentificatonBase", "OwnAuthentificatonBase\OwnAuthentificatonBase.csproj", "{7C00CB40-C90C-443B-834B-F9C16CC9BB93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{27A4C609-DD70-4FFD-A252-1175BD692FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27A4C609-DD70-4FFD-A252-1175BD692FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27A4C609-DD70-4FFD-A252-1175BD692FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C00CB40-C90C-443B-834B-F9C16CC9BB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C00CB40-C90C-443B-834B-F9C16CC9BB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C00CB40-C90C-443B-834B-F9C16CC9BB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C00CB40-C90C-443B-834B-F9C16CC9BB93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

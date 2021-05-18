@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TextRepository;
 using TextService.Contract;
+using OwnAuthentificatonBase.Configuration;
+using DebugMiddleware.Configuration;
 
 namespace TextService
 {
@@ -26,10 +28,12 @@ namespace TextService
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TextService", Version = "v1" });
             });
+
             services.AddTextRepository();
             services.AddTransient<ITextService, Service.TextService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddTextDbOption(Configuration);
+            services.AddOwnAppAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,10 +45,13 @@ namespace TextService
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TextService v1"));
             }
 
+            app.UseDebug();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
