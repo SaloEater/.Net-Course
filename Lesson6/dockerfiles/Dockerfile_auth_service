@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+WORKDIR /src
+COPY ./AuthentificationService ./AuthentificationService
+COPY ./AuthentificationBase ./AuthentificationBase
+WORKDIR ./AuthentificationService/AuthentificationService
+RUN dotnet restore "AuthentificationService.csproj"
+RUN dotnet build "AuthentificationService.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "AuthentificationService.csproj" -c Release -o /app/publish
+
+FROM lesson6_base AS final
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "AuthentificationService.dll"]

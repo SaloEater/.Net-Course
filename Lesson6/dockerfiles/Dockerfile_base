@@ -1,8 +1,9 @@
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-buster-slim
+
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 ENV ASPNETCORE_ENVIRONMENT={ASPNETCORE_ENVIRONMENT}
 ENV ASPNETCORE_URLS={ASPNETCORE_URLS}
 ENV ASPNETCORE_Kestrel__Certificates__Default__Password={ASPNETCORE_Kestrel__Certificates__Default__Password}
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path={ASPNETCORE_Kestrel__Certificates__Default__Path}
+EXPOSE 80
+EXPOSE 443

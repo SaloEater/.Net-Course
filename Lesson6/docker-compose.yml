@@ -3,4 +3,71 @@ version: "3.9"
 services:
     base:
         build:
-            dockerfile: dockerfile/Dockerfile_base
+            context: .
+            dockerfile: dockerfiles/Dockerfile_base
+            
+    auth_service_db:
+        image: "mcr.microsoft.com/mssql/server"
+        environment:
+            SA_PASSWORD: "Pass12345678"
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1434:1433"
+        volumes:
+            - mssql_auth_service_db:/var/opt/mssql
+    
+    auth_service:
+        container_name: auth_service
+        build:
+            context: .
+            dockerfile: dockerfiles/Dockerfile_auth_service
+        volumes:
+            - ./.asp.net/https:/https
+            - ./.asp.net/secrets:/root/.microsoft/usersecrets
+            - ./.asp.net/dp-keys:/root/.aspnet/DataProtection-Keys
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Development
+          - ASPNETCORE_URLS=https://+:443;http://+:80
+          - ASPNETCORE_Kestrel__Certificates__Default__Password=Pass12345678
+          - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+        ports:
+          - 9000:80
+          - 9100:443
+        depends_on:
+            - base
+            - auth_service_db    
+            
+    text_service_db:
+        image: "mcr.microsoft.com/mssql/server"
+        environment:
+            SA_PASSWORD: "Pass12345678"
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1435:1433"
+        volumes:
+            - mssql_text_service_db:/var/opt/mssql
+            
+    text_service:
+        container_name: text_service
+        build:
+            context: .
+            dockerfile: dockerfiles/Dockerfile_text_service
+        volumes:
+            - ./.asp.net/https:/https
+            - ./.asp.net/secrets:/root/.microsoft/usersecrets
+            - ./.asp.net/dp-keys:/root/.aspnet/DataProtection-Keys
+        environment:
+          - ASPNETCORE_ENVIRONMENT=Development
+          - ASPNETCORE_URLS=https://+:443;http://+:80
+          - ASPNETCORE_Kestrel__Certificates__Default__Password=Pass12345678
+          - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+        ports:
+          - 9001:80
+          - 9101:443
+        depends_on:
+            - base
+            - text_service_db
+
+volumes:
+    mssql_auth_service_db:
+    mssql_text_service_db:
